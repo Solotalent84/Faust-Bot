@@ -1,0 +1,17 @@
+from FaustBot.Modules.ModuleType import ModuleType
+from FaustBot.Communication.Connection import Connection
+from FaustBot.Modules.PrivMsgObserverPrototype import PrivMsgObserverPrototype
+
+class DuckObserver(PrivMsgObserverPrototype, PingObserverPrototype):
+    @staticmethod
+    def cmd():
+        return ['.duckstats']
+
+    @staticmethod
+    def help():
+        return 'Gibt die gefangenen und erschossenen Enten für den Nutzer aus.'
+       
+     def update_on_priv_msg(self, data: dict, connection: Connection):
+        if data['message'].find('.duckstats') == -1:
+            return
+     connection.send_channel(data['nick'] + " hat schon " + str(self.ducks_befriend[data['nick']]) + " befreundete Enten und " + str(self.ducks_hunt[data['nick']]) + " getötete Enten.")
