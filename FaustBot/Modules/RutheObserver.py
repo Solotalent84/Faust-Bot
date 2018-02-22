@@ -1,6 +1,7 @@
 #First try of a random ruthe-cartoon-module
 
 import random
+import requests
 
 from FaustBot.Communication import Connection
 from FaustBot.Modules.PrivMsgObserverPrototype import PrivMsgObserverPrototype
